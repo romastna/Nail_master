@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail Studio | Маникюрный салон</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1595475884562-073c30d45670?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #333;
+        }
+        
+        header {
+            background: rgba(255, 107, 139, 0.95);
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .slogan {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .service-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: #ff4757;
+            font-size: 22px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #ffccd5;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-name {
+            color: #ff6b88;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .service-desc {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .price {
+            color: #ff4757;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .gallery img {
+            width: 100%;
+            max-width: 250px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background: rgba(45, 45, 45, 0.95);
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 40px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .contacts {
+            margin-top: 15px;
+        }
+        
+        .social-links {
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .vk-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-align: center;
+            min-width: 200px;
+            background: #4a76a8;
+        }
+        
+        .vk-btn:hover {
+            background: #3a6595;
+            transform: translateY(-3px);
+        }
+        
+        .phone-btn {
+            display: block;
+            margin-top: 15px;
+            color: #ff4757;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        /* Стили для системы отзывов */
+        .reviews-section {
+            margin-top: 40px;
+        }
+        
+        .total-rating {
+            background: #fff8f8;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .rating-value {
+            font-size: 24px;
+            color: #ff6b88;
+            font-weight: bold;
+        }
+        
+        .review-form {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #ff6b88;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: #ff6b88;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #ff4757;
+            transform: translateY(-3px);
+        }
+        
+        .reviews-list {
+            margin-top: 30px;
+        }
+        
+        .review-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .review-author {
+            font-weight: bold;
+            color: #ff4757;
+        }
+        
+        .review-date {
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .stars-rating {
+            font-size: 24px;
+            letter-spacing: 5px;
+            display: inline-block;
+            user-select: none;
+        }
+        
+        .stars-rating .star {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .stars-rating .star:hover {
+            transform: scale(1.2);
+        }
+        
+        .stars-rating .star.active {
+            color: #ffc107;
+            text-shadow: 0 0 8px rgba(255, 193, 7, 0.7);
+        }
+
+        .review-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .edit-btn, .delete-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .edit-btn {
+            background: #4a76a8;
+            color: white;
+        }
+        
+        .edit-btn:hover {
+            background: #3a6595;
+        }
+        
+        .delete-btn {
+            background: #ff4757;
+            color: white;
+        }
+        
+        .delete-btn:hover {
+            background: #e84118;
+        }
+
+        .cancel-btn {
+            background: #666;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .admin-panel {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .admin-panel h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .clear-all-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .clear-all-btn:hover {
+            background: #c82333;
+        }
+
+        .logout-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            margin-left: 10px;
+        }
+
+        .logout-btn:hover {
+            background: #5a6268;
+        }
+
+        #toggleAdminBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background: #ff6b88;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Nail Studio</div>
+        <div class="slogan">Профессиональный маникюрный салон</div>
+    </header>
+    
+    <div class="container">
+        <div class="service-section">
+            <h2 class="section-title">Наши услуги</h2>
+            
+            <div class="service-card">
+                <div class="service-name">Классический маникюр</div>
+                <div class="service-desc">Аккуратная обработка ногтей и кутикулы с покрытием обычным лаком</div>
+                <div class="price">1000 руб.</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-name">Гель-лак</div>
+                <div class="service-desc">Стойкое покрытие, которое держится до 3-4 недель</div>
+                <div class="price">1500 руб.</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-name">Педикюр</div>
+                <div class="service-desc">Комплексный уход за стопами и ногтями ног</div>
+                <div class="price">1800 руб.</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-name">Наращивание ногтей</div>
+                <div class="service-desc">Создание идеальной длины и формы с помощью геля или акрила</div>
+                <div class="price">2500 руб.</div>
+            </div>
+        </div>
+        
+        <div class="service-section">
+            <h2 class="section-title">Наши работы</h2>
+            <div class="gallery">
+                <img src="https://i.postimg.cc/HxdPnZwX/nail2.webp" alt="Пример маникюра 1">
+                <img src="https://i.postimg.cc/FKjB95Lh/Nail1.webp" alt="Пример маникюра 2">
+                <img src="https://i.postimg.cc/HxzvywzK/nail3.webp" alt="Пример маникюра 3">
+            </div>
+        </div>
+
+        <!-- Секция отзывов -->
+        <div class="service-section reviews-section">
+            <h2 class="section-title">Отзывы клиентов</h2>
+            
+            <div class="total-rating">
+                <div class="rating-value">★ <span id="averageRating">0</span>/5</div>
+                <div class="rating-count" id="reviewCount">(0 отзывов)</div>
+            </div>
+            
+            <div class="review-form">
+                <h3>Оставить отзыв</h3>
+                <form id="reviewForm">
+                    <input type="hidden" id="editId" value="">
+                    <div class="form-group">
+                        <label for="reviewName">Ваше имя:</label>
+                        <input type="text" id="reviewName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Оценка:</label>
+                        <div class="stars-rating" id="starsContainer">
+                            <span class="star" data-value="1">☆</span>
+                            <span class="star" data-value="2">☆</span>
+                            <span class="star" data-value="3">☆</span>
+                            <span class="star" data-value="4">☆</span>
+                            <span class="star" data-value="5">☆</span>
+                            <input type="hidden" id="selectedRating" value="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewText">Ваш отзыв:</label>
+                        <textarea id="reviewText" required></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="submit-btn" id="submitReviewBtn">Отправить отзыв</button>
+                        <button type="button" class="submit-btn cancel-btn" id="cancelEditBtn" style="display: none;">Отмена</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Панель администратора -->
+            <div class="admin-panel" id="adminPanel" style="display: none;">
+                <h3>Панель администратора</h3>
+                <button class="clear-all-btn" id="clearAllBtn">Очистить все отзывы</button>
+                <button class="logout-btn" id="logoutBtn">Выйти</button>
+            </div>
+            
+            <div class="reviews-list" id="reviewsContainer">
+                <!-- Отзывы будут здесь -->
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div>Nail Studio © 2023</div>
+        <div class="contacts">
+            <div>Адрес: г. Ярославь, пр-т Фрунзе, 77а</div>
+            <div class="contact-buttons">
+                <a href="https://vk.com/anna_76nails" class="vk-btn" target="_blank">
+                    ✏️ Запись VK
+                </a>
+            </div>
+            <a href="tel:+79991234567" class="phone-btn">Или позвоните: +7 (906) 631-35-22</a>
+        </div>
+    </footer>
+
+    <!-- Кнопка переключения админ-режима -->
+    <button id="toggleAdminBtn">🔒 Режим администратора</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Основной объект для работы с отзывами
+            const reviewsApp = {
+                // Инициализация приложения
+                init() {
+                    this.cacheElements();
+                    this.setupStars();
+                    
+                    // Обработчик кнопки переключения режима
+                    document.getElementById('toggleAdminBtn').addEventListener('click', () => {
+                        const isAdmin = localStorage.getItem('isAdmin') === 'true';
+                        localStorage.setItem('isAdmin', !isAdmin);
+                        location.reload();
+                    });
+                    
+                    // Обработчик кнопки выхода
+                    document.getElementById('logoutBtn').addEventListener('click', () => {
+                        localStorage.removeItem('isAdmin');
+                        location.reload();
+                    });
+                    
+                    this.bindEvents();
+                    this.checkAdmin();
+                    this.displayReviews();
+                },
+                
+                // Проверка прав администратора
+                checkAdmin() {
+                    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+                    if (isAdmin) {
+                        this.showAdminPanel();
+                    }
+                },
+                
+                // Кэширование DOM элементов
+                cacheElements() {
+                    this.elements = {
+                        form: document.getElementById('reviewForm'),
+                        nameInput: document.getElementById('reviewName'),
+                        textInput: document.getElementById('reviewText'),
+                        ratingInput: document.getElementById('selectedRating'),
+                        editIdInput: document.getElementById('editId'),
+                        submitBtn: document.getElementById('submitReviewBtn'),
+                        cancelBtn: document.getElementById('cancelEditBtn'),
+                        reviewsContainer: document.getElementById('reviewsContainer'),
+                        averageRating: document.getElementById('averageRating'),
+                        reviewCount: document.getElementById('reviewCount'),
+                        starsContainer: document.getElementById('starsContainer'),
+                        adminPanel: document.getElementById('adminPanel'),
+                        clearAllBtn: document.getElementById('clearAllBtn'),
+                        logoutBtn: document.getElementById('logoutBtn')
+                    };
+                },
+                
+                // Показать панель администратора
+                showAdminPanel() {
+                    this.elements.adminPanel.style.display = 'block';
+                },
+                
+                // Настройка звезд рейтинга
+                setupStars() {
+                    this.elements.stars = Array.from(this.elements.starsContainer.querySelectorAll('.star'));
+                    
+                    this.elements.stars.forEach(star => {
+                        star.addEventListener('click', () => {
+                            const value = parseInt(star.dataset.value);
+                            this.setRating(value);
+                        });
+                    });
+                },
+                
+                // Установка рейтинга
+                setRating(value) {
+                    this.elements.ratingInput.value = value;
+                    
+                    this.elements.stars.forEach((star, index) => {
+                        if (index < value) {
+                            star.textContent = '★';
+                            star.classList.add('active');
+                        } else {
+                            star.textContent = '☆';
+                            star.classList.remove('active');
+                        }
+                    });
+                },
+                
+                // Назначение обработчиков событий
+                bindEvents() {
+                    this.elements.form.addEventListener('submit', (e) => this.handleFormSubmit(e));
+                    this.elements.cancelBtn.addEventListener('click', () => this.cancelEdit());
+                    this.elements.clearAllBtn.addEventListener('click', () => this.clearAllReviews());
+                    
+                    // Делегирование событий для кнопок в отзывах
+                    this.elements.reviewsContainer.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('edit-btn')) {
+                            this.startEditReview(e.target.dataset.id);
+                        } else if (e.target.classList.contains('delete-btn')) {
+                            this.deleteReview(e.target.dataset.id);
+                        }
+                    });
+                },
+                
+                // Получение всех отзывов
+                getReviews() {
+                    return JSON.parse(localStorage.getItem('nailReviews') || '[]');
+                },
+                
+                // Сохранение отзывов
+                saveReviews(reviews) {
+                    localStorage.setItem('nailReviews', JSON.stringify(reviews));
+                },
+                
+                // Обработка отправки формы
+                handleFormSubmit(e) {
+                    e.preventDefault();
+                    
+                    const name = this.elements.nameInput.value.trim();
+                    const text = this.elements.textInput.value.trim();
+                    const rating = parseInt(this.elements.ratingInput.value);
+                    const id = this.elements.editIdInput.value;
+                    
+                    // Валидация
+                    if (!name || !text) {
+                        alert('Пожалуйста, заполните все поля');
+                        return;
+                    }
+                    
+                    if (!rating || rating < 1 || rating > 5) {
+                        alert('Пожалуйста, поставьте оценку от 1 до 5');
+                        return;
+                    }
+                    
+                    const reviews = this.getReviews();
+                    const reviewData = {
+                        id: id || Date.now().toString(),
+                        name,
+                        rating,
+                        text,
+                        date: new Date().toISOString()
+                    };
+                    
+                    if (id) {
+                        // Обновление существующего отзыва
+                        const index = reviews.findIndex(r => r.id === id);
+                        if (index !== -1) {
+                            reviews[index] = reviewData;
+                        }
+                    } else {
+                        // Добавление нового отзыва
+                        reviews.unshift(reviewData);
+                    }
+                    
+                    this.saveReviews(reviews);
+                    this.displayReviews();
+                    this.resetForm();
+                    
+                    alert(id ? 'Отзыв обновлен!' : 'Спасибо за ваш отзыв!');
+                },
+                
+                // Отображение отзывов
+                displayReviews() {
+                    const reviews = this.getReviews();
+                    this.elements.reviewsContainer.innerHTML = '';
+                    
+                    if (reviews.length === 0) {
+                        this.elements.reviewsContainer.innerHTML = '<p>Пока нет отзывов. Будьте первым!</p>';
+                        this.updateRatingInfo(reviews);
+                        return;
+                    }
+                    
+                    reviews.forEach(review => {
+                        const reviewEl = document.createElement('div');
+                        reviewEl.className = 'review-item';
+                        reviewEl.innerHTML = `
+                            <div class="review-header">
+                                <span class="review-author">${review.name}</span>
+                                <span class="review-date">${new Date(review.date).toLocaleDateString('ru-RU')}</span>
+                            </div>
+                            <div class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}</div>
+                            <p class="review-text">${review.text}</p>
+                            <div class="review-actions">
+                                <button class="edit-btn" data-id="${review.id}">Редактировать</button>
+                                <button class="delete-btn" data-id="${review.id}">Удалить</button>
+                            </div>
+                        `;
+                        this.elements.reviewsContainer.appendChild(reviewEl);
+                    });
+                    
+                    this.updateRatingInfo(reviews);
+                },
+                
+                // Обновление информации о рейтинге
+                updateRatingInfo(reviews) {
+                    if (reviews.length === 0) {
+                        this.elements.averageRating.textContent = '0';
+                        this.elements.reviewCount.textContent = '(0 отзывов)';
+                        return;
+                    }
+                    
+                    const avg = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+                    this.elements.averageRating.textContent = avg;
+                    this.elements.reviewCount.textContent = `(${reviews.length} отзывов)`;
+                },
+                
+                // Начало редактирования отзыва
+                startEditReview(id) {
+                    const reviews = this.getReviews();
+                    const review = reviews.find(r => r.id === id);
+                    
+                    if (review) {
+                        this.elements.nameInput.value = review.name;
+                        this.elements.textInput.value = review.text;
+                        this.elements.editIdInput.value = review.id;
+                        this.setRating(review.rating);
+                        
+                        this.elements.submitBtn.textContent = 'Сохранить изменения';
+                        this.elements.cancelBtn.style.display = 'inline-block';
+                        
+                        // Прокрутка к форме
+                        this.elements.form.scrollIntoView({ behavior: 'smooth' });
+                    }
+                },
+                
+                // Удаление отзыва
+                deleteReview(id) {
+                    if (!confirm('Вы уверены, что хотите удалить этот отзыв?')) return;
+                    
+                    const reviews = this.getReviews().filter(review => review.id !== id);
+                    this.saveReviews(reviews);
+                    this.displayReviews();
+                    
+                    // Если удаляем редактируемый отзыв - сбрасываем форму
+                    if (this.elements.editIdInput.value === id) {
+                        this.resetForm();
+                    }
+                },
+                
+                // Очистка всех отзывов
+                clearAllReviews() {
+                    if (!confirm('Вы уверены, что хотите удалить ВСЕ отзывы? Это действие нельзя отменить.')) return;
+                    
+                    localStorage.removeItem('nailReviews');
+                    this.displayReviews();
+                    this.resetForm();
+                    alert('Все отзывы были удалены.');
+                },
+                
+                // Сброс формы
+                resetForm() {
+                    this.elements.form.reset();
+                    this.elements.editIdInput.value = '';
+                    this.elements.ratingInput.value = '0';
+                    this.elements.submitBtn.textContent = 'Отправить отзыв';
+                    this.elements.cancelBtn.style.display = 'none';
+                    
+                    // Сброс звезд рейтинга
+                    this.elements.stars.forEach(star => {
+                        star.textContent = '☆';
+                        star.classList.remove('active');
+                    });
+                },
+                
+                // Отмена редактирования
+                cancelEdit() {
+                    this.resetForm();
+                }
+            };
+            
+            // Запуск приложения
+            reviewsApp.init();
+        });
+    </script>
+</body>
+</html>
